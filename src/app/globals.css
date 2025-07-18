@@ -1,4 +1,22 @@
 /* src/app/globals.css */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Tambahkan kelas kustom container-content yang sudah kita bahas */
+@layer components {
+  .container-content {
+    max-width: 1248px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem; /* p-4 di Tailwind */
+    padding-right: 1rem; /* p-4 di Tailwind */
+  }
+}
+
+/* Anda juga bisa menambahkan font kustom atau gaya dasar lainnya di sini */
+body {
+  font-family: sans-serif; /*Ganti dengan font yang sesuai mockup Anda */
+  
+}
