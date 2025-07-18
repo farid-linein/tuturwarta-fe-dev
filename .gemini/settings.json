@@ -1,0 +1,45 @@
+{
+  "project": {
+    "name": "tutur-warta-fe-dev",
+    "default_branch": "main",
+    "branches": [
+      "main",
+      "develop",
+      "dev/home",
+      "integration"
+    ]
+  },
+  "context": {
+    "cwd": ".",
+    "include": [
+      "src/**",
+      "public/**",
+      "app/**"
+    ],
+    "exclude": [
+      "node_modules/**",
+      ".git/**",
+      "dist/**",
+      "build/**"
+    ]
+  },
+  "tools": {
+    "git": {
+      "enabled": true,
+      "fetch_branches": true
+    }
+  },
+  "features": {
+    "ai_assistant": true,
+    "enable_diff_view": true
+  },
+  "coreTools": [
+    "ReadFileTool",
+    "GlobTool",
+    "ShellTool(ls)"
+  ],
+  "excludeTools": [
+    "ShellTool(rm -rf)"
+  ],
+  "preferredEditor": "vscode"
+}
