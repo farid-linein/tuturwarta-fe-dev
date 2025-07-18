@@ -1,14 +1,25 @@
-name: Continuous Integration
+name: CI – Tutur Warta
 
 on:
   push:
     branches:
       - main
-      - master
+      - develop
+      - integration
+      - "dev/**"
+  pull_request:
+    branches:
+      - main
+      - develop
+      - integration
 
 jobs:
   build:
+    name: Validasi Kode
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
 
     steps:
       - name: Checkout code
@@ -18,12 +29,18 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Run linting
-        run: npm run lint
+        run: npm run lint --if-present
+
+      - name: Run type checking
+        run: npm run typecheck --if-present
 
       - name: Run build
+        env:
+          NEXT_TELEMETRY_DISABLED: '1'
         run: npm run build
